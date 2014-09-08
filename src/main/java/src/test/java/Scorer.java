@@ -8,6 +8,8 @@ public class Scorer {
 	private List<Integer> score;
 	private int rightScore;
 	private int leftScore;
+	private int gamesWonLeft;
+	private int gamesWonRight;
 
 	public Scorer() {
 		score = new ArrayList<Integer>();
@@ -23,17 +25,36 @@ public class Scorer {
 	}
 
 	public void rightScores() {
-		if (rightScore == 30) 
-			rightScore += 10;
-		else
-			rightScore += 15;
+		rightScore = calcScoreNumber(rightScore);
+		if (rightScore == 0)
+			gamesWonRight += 1;
+	}
+
+	private int calcScoreNumber(int score) {
+			if (score == 40) {
+				score = 0;
+				gamesWonLeft += 1;
+			}
+			else if (score == 30)
+				score += 10;
+			else
+				score += 15;
+			
+			return score;
 	}
 
 	public void leftScores() {
-		if (leftScore == 30)
-			leftScore += 10;
-		else
-			leftScore += 15;
+		leftScore = calcScoreNumber(leftScore);
+		if (leftScore == 0)
+			gamesWonRight += 1;
+	}
+
+	public int gamesWon() {
+		return gamesWonLeft;
+	}
+
+	public int gamesWonRight() {
+		return gamesWonRight;
 	}
 
 }

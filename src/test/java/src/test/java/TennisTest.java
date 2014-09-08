@@ -11,6 +11,8 @@ import org.junit.Test;
 
 public class TennisTest {
 
+	private static final String RIGHT = "right";
+	private static final String LEFT = "left";
 	private List<Integer> expectedScore;
 	private Scorer scorer;
 
@@ -46,7 +48,7 @@ public class TennisTest {
 		expectedScore.add(40);
 		expectedScore.add(0);
 		
-		scoreTimes("left", 3);
+		scoreTimes(LEFT, 3);
 		
 		scoreShouldEqualExpectedScore();
 	}
@@ -56,14 +58,36 @@ public class TennisTest {
 		expectedScore.add(0);
 		expectedScore.add(40);
 		
-		scoreTimes("right", 3);
+		scoreTimes(RIGHT, 3);
 		
 		scoreShouldEqualExpectedScore();
+	}
+	
+	@Test
+	public void rightPlayerScoresFourTimesShouldBeGame() {
+		expectedScore.add(0);
+		expectedScore.add(0);
+		
+		scoreTimes(RIGHT, 4);
+		
+		scoreShouldEqualExpectedScore();
+		assertEquals(1,scorer.gamesWon());
+	}
+
+	@Test
+	public void leftPlayerScoresFourTimesShouldBeGame() {
+		expectedScore.add(0);
+		expectedScore.add(0);
+		
+		scoreTimes(LEFT, 4);
+		
+		scoreShouldEqualExpectedScore();
+		assertEquals(1,scorer.gamesWonRight());
 	}
 
 	private void scoreTimes(String scorerSide, int timesScored) {
 		for (int i = 0; i < timesScored; i++) {
-			if (scorerSide.equals("left"))
+			if (scorerSide.equals(LEFT))
 				scorer.leftScores();
 			else
 				scorer.rightScores();
