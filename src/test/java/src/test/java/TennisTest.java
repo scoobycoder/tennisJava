@@ -85,6 +85,14 @@ public class TennisTest {
 		assertEquals(1,scorer.gamesWonRight());
 	}
 
+	@Test
+	public void playersTiedAt40WillRightPlayerDoesNotWinIfScores() {
+		scoreTimes(LEFT, 4);
+		scoreTimes(RIGHT, 5);
+		
+		assertEquals(0,scorer.gamesWonRight());
+	}
+	
 	private void scoreTimes(String scorerSide, int timesScored) {
 		for (int i = 0; i < timesScored; i++) {
 			if (scorerSide.equals(LEFT))
