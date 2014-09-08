@@ -27,7 +27,7 @@ public class TennisTest {
 		
 		scorer.rightScores();
 		
-		assertEquals(expectedScore, scorer.getScore());
+		scoreShouldEqualExpectedScore();
 	}
 	
 	@Test
@@ -37,7 +37,40 @@ public class TennisTest {
 		
 		scorer.leftScores();
 		
-		assertEquals(expectedScore, scorer.getScore());
+		scoreShouldEqualExpectedScore();
+	}
+
+	
+	@Test
+	public void leftPlayerScoresThreeTimesShouldBe40to0() {
+		expectedScore.add(40);
+		expectedScore.add(0);
+		
+		scoreTimes("left", 3);
+		
+		scoreShouldEqualExpectedScore();
 	}
 	
+	@Test
+	public void rightPlayerScoresThreeTimesShouldBe0to40() {
+		expectedScore.add(0);
+		expectedScore.add(40);
+		
+		scoreTimes("right", 3);
+		
+		scoreShouldEqualExpectedScore();
+	}
+
+	private void scoreTimes(String scorerSide, int timesScored) {
+		for (int i = 0; i < timesScored; i++) {
+			if (scorerSide.equals("left"))
+				scorer.leftScores();
+			else
+				scorer.rightScores();
+		}
+	}
+	
+	private void scoreShouldEqualExpectedScore() {
+		assertEquals(expectedScore, scorer.getScore());
+	}
 }

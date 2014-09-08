@@ -23,11 +23,17 @@ public class Scorer {
 	}
 
 	public void rightScores() {
-		rightScore += 15;
+		if (rightScore == 30) 
+			rightScore += 10;
+		else
+			rightScore += 15;
 	}
 
 	public void leftScores() {
-		leftScore += 15;
+		if (leftScore == 30)
+			leftScore += 10;
+		else
+			leftScore += 15;
 	}
 
 }
