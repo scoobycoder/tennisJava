@@ -26,16 +26,20 @@ public class Scorer {
 
 	public void rightScores() {
 		rightScore = calcScoreNumber(rightScore);
-		if (rightScore == 0 && leftScore != 40)
+		if (isWinningShot(rightScore, leftScore))
 			gamesWonRight += 1;
 	}
 
 	public void leftScores() {
 		leftScore = calcScoreNumber(leftScore);
-		if (leftScore == 0 && rightScore != 40)
+		if (isWinningShot(leftScore, rightScore))
 			gamesWonLeft += 1;
 	}
 	
+	private boolean isWinningShot(int primaryScore, int secondaryScore) {
+		return primaryScore == 0 && secondaryScore != 40;
+	}
+
 	private int calcScoreNumber(int score) {
 			if (score == 40) {
 				score = 0;
