@@ -98,7 +98,7 @@ public class TennisTest {
 		scoreTimes(RIGHT, 3);
 		scoreTimes(LEFT, 4);
 		
-		assertEquals(0,scorer.gamesWonRight());
+		assertEquals(0,scorer.gamesWonLeft());
 	}
 	
 	private void scoreTimes(String scorerSide, int timesScored) {
