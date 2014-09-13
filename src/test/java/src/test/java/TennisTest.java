@@ -99,7 +99,7 @@ public class TennisTest {
 		scoreTimes(LEFT, 4);
 		
 		assertEquals(0,scorer.gamesWonRight());
-	}	
+	}
 	
 	private void scoreTimes(String scorerSide, int timesScored) {
 		for (int i = 0; i < timesScored; i++) {
