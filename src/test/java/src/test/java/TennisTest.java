@@ -87,13 +87,19 @@ public class TennisTest {
 
 	@Test
 	public void playersTiedAt40WillRightPlayerDoesNotWinIfScores() {
-		scoreTimes(RIGHT, 3);
 		scoreTimes(LEFT, 3);
-		
-		scorer.rightScores();
+		scoreTimes(RIGHT, 4);
 		
 		assertEquals(0,scorer.gamesWonRight());
 	}
+
+	@Test
+	public void playersTiedAt40WillLeftPlayerDoesNotWinIfScores() {
+		scoreTimes(RIGHT, 3);
+		scoreTimes(LEFT, 4);
+		
+		assertEquals(0,scorer.gamesWonRight());
+	}	
 	
 	private void scoreTimes(String scorerSide, int timesScored) {
 		for (int i = 0; i < timesScored; i++) {
