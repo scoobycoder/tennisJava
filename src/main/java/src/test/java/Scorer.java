@@ -26,14 +26,19 @@ public class Scorer {
 
 	public void rightScores() {
 		rightScore = calcScoreNumber(rightScore);
-		if (rightScore == 0)
+		if (rightScore == 0 && leftScore != 40)
 			gamesWonRight += 1;
 	}
 
+	public void leftScores() {
+		leftScore = calcScoreNumber(leftScore);
+		if (leftScore == 0 && rightScore != 40)
+			gamesWonLeft += 1;
+	}
+	
 	private int calcScoreNumber(int score) {
 			if (score == 40) {
 				score = 0;
-				gamesWonLeft += 1;
 			}
 			else if (score == 30)
 				score += 10;
@@ -43,13 +48,7 @@ public class Scorer {
 			return score;
 	}
 
-	public void leftScores() {
-		leftScore = calcScoreNumber(leftScore);
-		if (leftScore == 0)
-			gamesWonRight += 1;
-	}
-
-	public int gamesWon() {
+	public int gamesWonLeft() {
 		return gamesWonLeft;
 	}
 

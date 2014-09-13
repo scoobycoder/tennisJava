@@ -71,7 +71,7 @@ public class TennisTest {
 		scoreTimes(RIGHT, 4);
 		
 		scoreShouldEqualExpectedScore();
-		assertEquals(1,scorer.gamesWon());
+		assertEquals(1,scorer.gamesWonRight());
 	}
 
 	@Test
@@ -82,13 +82,15 @@ public class TennisTest {
 		scoreTimes(LEFT, 4);
 		
 		scoreShouldEqualExpectedScore();
-		assertEquals(1,scorer.gamesWonRight());
+		assertEquals(1,scorer.gamesWonLeft());
 	}
 
 	@Test
 	public void playersTiedAt40WillRightPlayerDoesNotWinIfScores() {
-		scoreTimes(LEFT, 4);
-		scoreTimes(RIGHT, 5);
+		scoreTimes(RIGHT, 3);
+		scoreTimes(LEFT, 3);
+		
+		scorer.rightScores();
 		
 		assertEquals(0,scorer.gamesWonRight());
 	}
